@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "HandOfTheKing",
+        "repositoryURL": "https://github.com/webfrogs/HandOfTheKing.git",
+        "state": {
+          "branch": "master",
+          "revision": "14472e9e5b76a91ee1eb7e4afb863774040f6eee",
+          "version": null
+        }
+      },
+      {
         "package": "Rainbow",
         "repositoryURL": "https://github.com/onevcat/Rainbow",
         "state": {

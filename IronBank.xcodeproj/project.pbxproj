@@ -7,140 +7,195 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		OBJ_36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_42 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Package.swift */; };
-		OBJ_48 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* main.swift */; };
-		OBJ_50 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Rainbow::Rainbow::Product" /* Rainbow.framework */; };
-		OBJ_51 /* IronBankKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "IronBank::IronBankKit::Product" /* IronBankKit.framework */; };
-		OBJ_60 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* BackgroundColor.swift */; };
-		OBJ_61 /* CodesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* CodesParser.swift */; };
-		OBJ_62 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Color.swift */; };
-		OBJ_63 /* ControlCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* ControlCode.swift */; };
-		OBJ_64 /* ModesExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* ModesExtractor.swift */; };
-		OBJ_65 /* OutputTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* OutputTarget.swift */; };
-		OBJ_66 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Rainbow.swift */; };
-		OBJ_67 /* String+Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* String+Rainbow.swift */; };
-		OBJ_68 /* StringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* StringGenerator.swift */; };
-		OBJ_69 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Style.swift */; };
-		OBJ_70 /* XcodeColorsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* XcodeColorsSupport.swift */; };
-		OBJ_76 /* git.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* git.swift */; };
+		OBJ_101 /* Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Namespace.swift */; };
+		OBJ_102 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* StringExtension.swift */; };
+		OBJ_43 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_49 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Package.swift */; };
+		OBJ_55 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Package.swift */; };
+		OBJ_61 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* main.swift */; };
+		OBJ_63 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Rainbow::Rainbow::Product" /* Rainbow.framework */; };
+		OBJ_64 /* IronBankKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "IronBank::IronBankKit::Product" /* IronBankKit.framework */; };
+		OBJ_65 /* HandOfTheKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HandOfTheKing::HandOfTheKing::Product" /* HandOfTheKing.framework */; };
+		OBJ_76 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* BackgroundColor.swift */; };
+		OBJ_77 /* CodesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* CodesParser.swift */; };
+		OBJ_78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Color.swift */; };
+		OBJ_79 /* ControlCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* ControlCode.swift */; };
+		OBJ_80 /* ModesExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* ModesExtractor.swift */; };
+		OBJ_81 /* OutputTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* OutputTarget.swift */; };
+		OBJ_82 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Rainbow.swift */; };
+		OBJ_83 /* String+Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* String+Rainbow.swift */; };
+		OBJ_84 /* StringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* StringGenerator.swift */; };
+		OBJ_85 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Style.swift */; };
+		OBJ_86 /* XcodeColorsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* XcodeColorsSupport.swift */; };
+		OBJ_92 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ConfigFile.swift */; };
+		OBJ_93 /* Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Git.swift */; };
+		OBJ_95 /* HandOfTheKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HandOfTheKing::HandOfTheKing::Product" /* HandOfTheKing.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C32056BE1FD0150000049873 /* PBXContainerItemProxy */ = {
+		C3A465A81FD69EFF0048826B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Rainbow::Rainbow";
 			remoteInfo = Rainbow;
 		};
-		C32056BF1FD0150000049873 /* PBXContainerItemProxy */ = {
+		C3A465A91FD69EFF0048826B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "IronBank::IronBankKit";
 			remoteInfo = IronBankKit;
 		};
+		C3A465AA1FD69EFF0048826B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HandOfTheKing::HandOfTheKing";
+			remoteInfo = HandOfTheKing;
+		};
+		C3A465AB1FD69EFF0048826B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "HandOfTheKing::HandOfTheKing";
+			remoteInfo = HandOfTheKing;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		"HandOfTheKing::HandOfTheKing::Product" /* HandOfTheKing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HandOfTheKing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"IronBank::IronBank::Product" /* IronBank */ = {isa = PBXFileReference; lastKnownFileType = text; path = IronBank; sourceTree = BUILT_PRODUCTS_DIR; };
 		"IronBank::IronBankKit::Product" /* IronBankKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IronBankKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_11 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_15 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/carl/develop/macOS/self/IronBank/.build/checkouts/Rainbow-4833422609927903952/Package.swift"; sourceTree = "<group>"; };
-		OBJ_16 /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
-		OBJ_17 /* CodesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesParser.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		OBJ_19 /* ControlCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCode.swift; sourceTree = "<group>"; };
-		OBJ_20 /* ModesExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModesExtractor.swift; sourceTree = "<group>"; };
-		OBJ_21 /* OutputTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTarget.swift; sourceTree = "<group>"; };
-		OBJ_22 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
-		OBJ_23 /* String+Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Rainbow.swift"; sourceTree = "<group>"; };
-		OBJ_24 /* StringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGenerator.swift; sourceTree = "<group>"; };
-		OBJ_25 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		OBJ_26 /* XcodeColorsSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeColorsSupport.swift; sourceTree = "<group>"; };
+		OBJ_10 /* Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Git.swift; sourceTree = "<group>"; };
+		OBJ_12 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namespace.swift; sourceTree = "<group>"; };
+		OBJ_18 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/carl/develop/macOS/self/IronBank/.build/checkouts/HandOfTheKing.git-3161676498207957456/Package.swift"; sourceTree = "<group>"; };
+		OBJ_21 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/carl/develop/macOS/self/IronBank/.build/checkouts/Rainbow-4833422609927903952/Package.swift"; sourceTree = "<group>"; };
+		OBJ_22 /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
+		OBJ_23 /* CodesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesParser.swift; sourceTree = "<group>"; };
+		OBJ_24 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		OBJ_25 /* ControlCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCode.swift; sourceTree = "<group>"; };
+		OBJ_26 /* ModesExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModesExtractor.swift; sourceTree = "<group>"; };
+		OBJ_27 /* OutputTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTarget.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
+		OBJ_29 /* String+Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Rainbow.swift"; sourceTree = "<group>"; };
+		OBJ_30 /* StringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGenerator.swift; sourceTree = "<group>"; };
+		OBJ_31 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		OBJ_32 /* XcodeColorsSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeColorsSupport.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = git.swift; sourceTree = "<group>"; };
+		OBJ_9 /* ConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
 		"Rainbow::Rainbow::Product" /* Rainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Rainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_49 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_50 /* Rainbow.framework in Frameworks */,
-				OBJ_51 /* IronBankKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_71 /* Frameworks */ = {
+		OBJ_103 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_77 /* Frameworks */ = {
+		OBJ_62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				OBJ_63 /* Rainbow.framework in Frameworks */,
+				OBJ_64 /* IronBankKit.framework in Frameworks */,
+				OBJ_65 /* HandOfTheKing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_95 /* HandOfTheKing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_10 /* IronBank */ = {
+		OBJ_11 /* IronBank */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* main.swift */,
+				OBJ_12 /* main.swift */,
 			);
 			name = IronBank;
 			path = Sources/IronBank;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_12 /* Tests */ = {
+		OBJ_13 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_13 /* Dependencies */ = {
+		OBJ_14 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* Rainbow 3.0.3 */,
+				OBJ_15 /* HandOfTheKing */,
+				OBJ_20 /* Rainbow 3.0.3 */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		OBJ_14 /* Rainbow 3.0.3 */ = {
+		OBJ_15 /* HandOfTheKing */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_15 /* Package.swift */,
-				OBJ_16 /* BackgroundColor.swift */,
-				OBJ_17 /* CodesParser.swift */,
-				OBJ_18 /* Color.swift */,
-				OBJ_19 /* ControlCode.swift */,
-				OBJ_20 /* ModesExtractor.swift */,
-				OBJ_21 /* OutputTarget.swift */,
-				OBJ_22 /* Rainbow.swift */,
-				OBJ_23 /* String+Rainbow.swift */,
-				OBJ_24 /* StringGenerator.swift */,
-				OBJ_25 /* Style.swift */,
-				OBJ_26 /* XcodeColorsSupport.swift */,
+				OBJ_16 /* HandOfTheKing */,
+				OBJ_19 /* Package.swift */,
+			);
+			name = HandOfTheKing;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_16 /* HandOfTheKing */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_17 /* Namespace.swift */,
+				OBJ_18 /* StringExtension.swift */,
+			);
+			name = HandOfTheKing;
+			path = ".build/checkouts/HandOfTheKing.git-3161676498207957456/Sources/HandOfTheKing";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_20 /* Rainbow 3.0.3 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_21 /* Package.swift */,
+				OBJ_22 /* BackgroundColor.swift */,
+				OBJ_23 /* CodesParser.swift */,
+				OBJ_24 /* Color.swift */,
+				OBJ_25 /* ControlCode.swift */,
+				OBJ_26 /* ModesExtractor.swift */,
+				OBJ_27 /* OutputTarget.swift */,
+				OBJ_28 /* Rainbow.swift */,
+				OBJ_29 /* String+Rainbow.swift */,
+				OBJ_30 /* StringGenerator.swift */,
+				OBJ_31 /* Style.swift */,
+				OBJ_32 /* XcodeColorsSupport.swift */,
 			);
 			name = "Rainbow 3.0.3";
 			path = ".build/checkouts/Rainbow-4833422609927903952/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_27 /* Products */ = {
+		OBJ_33 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"IronBank::IronBank::Product" /* IronBank */,
 				"Rainbow::Rainbow::Product" /* Rainbow.framework */,
 				"IronBank::IronBankKit::Product" /* IronBankKit.framework */,
+				"HandOfTheKing::HandOfTheKing::Product" /* HandOfTheKing.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -150,9 +205,9 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_12 /* Tests */,
-				OBJ_13 /* Dependencies */,
-				OBJ_27 /* Products */,
+				OBJ_13 /* Tests */,
+				OBJ_14 /* Dependencies */,
+				OBJ_33 /* Products */,
 			);
 			name = "";
 			sourceTree = "<group>";
@@ -161,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* IronBankKit */,
-				OBJ_10 /* IronBank */,
+				OBJ_11 /* IronBank */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -169,7 +224,8 @@
 		OBJ_8 /* IronBankKit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* git.swift */,
+				OBJ_9 /* ConfigFile.swift */,
+				OBJ_10 /* Git.swift */,
 			);
 			name = IronBankKit;
 			path = Sources/IronBankKit;
@@ -178,18 +234,49 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"IronBank::IronBank" /* IronBank */ = {
+		"HandOfTheKing::HandOfTheKing" /* HandOfTheKing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_44 /* Build configuration list for PBXNativeTarget "IronBank" */;
+			buildConfigurationList = OBJ_97 /* Build configuration list for PBXNativeTarget "HandOfTheKing" */;
 			buildPhases = (
-				OBJ_47 /* Sources */,
-				OBJ_49 /* Frameworks */,
+				OBJ_100 /* Sources */,
+				OBJ_103 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_52 /* PBXTargetDependency */,
-				OBJ_54 /* PBXTargetDependency */,
+			);
+			name = HandOfTheKing;
+			productName = HandOfTheKing;
+			productReference = "HandOfTheKing::HandOfTheKing::Product" /* HandOfTheKing.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"HandOfTheKing::SwiftPMPackageDescription" /* HandOfTheKingPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_45 /* Build configuration list for PBXNativeTarget "HandOfTheKingPackageDescription" */;
+			buildPhases = (
+				OBJ_48 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandOfTheKingPackageDescription;
+			productName = HandOfTheKingPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"IronBank::IronBank" /* IronBank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_57 /* Build configuration list for PBXNativeTarget "IronBank" */;
+			buildPhases = (
+				OBJ_60 /* Sources */,
+				OBJ_62 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_66 /* PBXTargetDependency */,
+				OBJ_68 /* PBXTargetDependency */,
+				OBJ_70 /* PBXTargetDependency */,
 			);
 			name = IronBank;
 			productName = IronBank;
@@ -198,14 +285,15 @@
 		};
 		"IronBank::IronBankKit" /* IronBankKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_72 /* Build configuration list for PBXNativeTarget "IronBankKit" */;
+			buildConfigurationList = OBJ_88 /* Build configuration list for PBXNativeTarget "IronBankKit" */;
 			buildPhases = (
-				OBJ_75 /* Sources */,
-				OBJ_77 /* Frameworks */,
+				OBJ_91 /* Sources */,
+				OBJ_94 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				OBJ_96 /* PBXTargetDependency */,
 			);
 			name = IronBankKit;
 			productName = IronBankKit;
@@ -214,9 +302,9 @@
 		};
 		"IronBank::SwiftPMPackageDescription" /* IronBankPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_32 /* Build configuration list for PBXNativeTarget "IronBankPackageDescription" */;
+			buildConfigurationList = OBJ_39 /* Build configuration list for PBXNativeTarget "IronBankPackageDescription" */;
 			buildPhases = (
-				OBJ_35 /* Sources */,
+				OBJ_42 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -228,10 +316,10 @@
 		};
 		"Rainbow::Rainbow" /* Rainbow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "Rainbow" */;
+			buildConfigurationList = OBJ_72 /* Build configuration list for PBXNativeTarget "Rainbow" */;
 			buildPhases = (
-				OBJ_59 /* Sources */,
-				OBJ_71 /* Frameworks */,
+				OBJ_75 /* Sources */,
+				OBJ_87 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,9 +332,9 @@
 		};
 		"Rainbow::SwiftPMPackageDescription" /* RainbowPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_38 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */;
+			buildConfigurationList = OBJ_51 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */;
 			buildPhases = (
-				OBJ_41 /* Sources */,
+				OBJ_54 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -272,59 +360,60 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_27 /* Products */;
+			productRefGroup = OBJ_33 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				"IronBank::SwiftPMPackageDescription" /* IronBankPackageDescription */,
+				"HandOfTheKing::SwiftPMPackageDescription" /* HandOfTheKingPackageDescription */,
 				"Rainbow::SwiftPMPackageDescription" /* RainbowPackageDescription */,
 				"IronBank::IronBank" /* IronBank */,
 				"Rainbow::Rainbow" /* Rainbow */,
 				"IronBank::IronBankKit" /* IronBankKit */,
+				"HandOfTheKing::HandOfTheKing" /* HandOfTheKing */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_35 /* Sources */ = {
+		OBJ_100 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_36 /* Package.swift in Sources */,
+				OBJ_101 /* Namespace.swift in Sources */,
+				OBJ_102 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_41 /* Sources */ = {
+		OBJ_42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_42 /* Package.swift in Sources */,
+				OBJ_43 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_47 /* Sources */ = {
+		OBJ_48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_48 /* main.swift in Sources */,
+				OBJ_49 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_59 /* Sources */ = {
+		OBJ_54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_60 /* BackgroundColor.swift in Sources */,
-				OBJ_61 /* CodesParser.swift in Sources */,
-				OBJ_62 /* Color.swift in Sources */,
-				OBJ_63 /* ControlCode.swift in Sources */,
-				OBJ_64 /* ModesExtractor.swift in Sources */,
-				OBJ_65 /* OutputTarget.swift in Sources */,
-				OBJ_66 /* Rainbow.swift in Sources */,
-				OBJ_67 /* String+Rainbow.swift in Sources */,
-				OBJ_68 /* StringGenerator.swift in Sources */,
-				OBJ_69 /* Style.swift in Sources */,
-				OBJ_70 /* XcodeColorsSupport.swift in Sources */,
+				OBJ_55 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_61 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,22 +421,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_76 /* git.swift in Sources */,
+				OBJ_76 /* BackgroundColor.swift in Sources */,
+				OBJ_77 /* CodesParser.swift in Sources */,
+				OBJ_78 /* Color.swift in Sources */,
+				OBJ_79 /* ControlCode.swift in Sources */,
+				OBJ_80 /* ModesExtractor.swift in Sources */,
+				OBJ_81 /* OutputTarget.swift in Sources */,
+				OBJ_82 /* Rainbow.swift in Sources */,
+				OBJ_83 /* String+Rainbow.swift in Sources */,
+				OBJ_84 /* StringGenerator.swift in Sources */,
+				OBJ_85 /* Style.swift in Sources */,
+				OBJ_86 /* XcodeColorsSupport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_92 /* ConfigFile.swift in Sources */,
+				OBJ_93 /* Git.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_52 /* PBXTargetDependency */ = {
+		OBJ_66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Rainbow::Rainbow" /* Rainbow */;
-			targetProxy = C32056BE1FD0150000049873 /* PBXContainerItemProxy */;
+			targetProxy = C3A465A81FD69EFF0048826B /* PBXContainerItemProxy */;
 		};
-		OBJ_54 /* PBXTargetDependency */ = {
+		OBJ_68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "IronBank::IronBankKit" /* IronBankKit */;
-			targetProxy = C32056BF1FD0150000049873 /* PBXContainerItemProxy */;
+			targetProxy = C3A465A91FD69EFF0048826B /* PBXContainerItemProxy */;
+		};
+		OBJ_70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HandOfTheKing::HandOfTheKing" /* HandOfTheKing */;
+			targetProxy = C3A465AB1FD69EFF0048826B /* PBXContainerItemProxy */;
+		};
+		OBJ_96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "HandOfTheKing::HandOfTheKing" /* HandOfTheKing */;
+			targetProxy = C3A465AA1FD69EFF0048826B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -374,33 +492,6 @@
 			};
 			name = Debug;
 		};
-		OBJ_33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_34 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -421,7 +512,16 @@
 			};
 			name = Release;
 		};
-		OBJ_40 /* Release */ = {
+		OBJ_40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -430,85 +530,77 @@
 			};
 			name = Release;
 		};
-		OBJ_45 /* Debug */ = {
+		OBJ_46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = IronBank.xcodeproj/IronBank_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
-				TARGET_NAME = IronBank;
 			};
 			name = Debug;
 		};
-		OBJ_46 /* Release */ = {
+		OBJ_47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = IronBank.xcodeproj/IronBank_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
-				TARGET_NAME = IronBank;
 			};
 			name = Release;
 		};
-		OBJ_57 /* Debug */ = {
+		OBJ_52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = IronBank.xcodeproj/Rainbow_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
 				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Rainbow;
 			};
 			name = Debug;
 		};
-		OBJ_58 /* Release */ = {
+		OBJ_53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_TESTABILITY = YES;
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = IronBank.xcodeproj/Rainbow_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				INFOPLIST_FILE = IronBank.xcodeproj/IronBank_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 4.0;
-				TARGET_NAME = Rainbow;
+				TARGET_NAME = IronBank;
+			};
+			name = Debug;
+		};
+		OBJ_59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IronBank.xcodeproj/IronBank_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IronBank;
 			};
 			name = Release;
 		};
@@ -521,20 +613,42 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = IronBank.xcodeproj/IronBankKit_Info.plist;
+				INFOPLIST_FILE = IronBank.xcodeproj/Rainbow_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = IronBankKit;
+				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
-				TARGET_NAME = IronBankKit;
+				TARGET_NAME = Rainbow;
 			};
 			name = Debug;
 		};
 		OBJ_74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IronBank.xcodeproj/Rainbow_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Rainbow;
+			};
+			name = Release;
+		};
+		OBJ_89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -553,6 +667,72 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = IronBankKit;
+			};
+			name = Debug;
+		};
+		OBJ_90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IronBank.xcodeproj/IronBankKit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = IronBankKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IronBankKit;
+			};
+			name = Release;
+		};
+		OBJ_98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IronBank.xcodeproj/HandOfTheKing_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HandOfTheKing;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = HandOfTheKing;
+			};
+			name = Debug;
+		};
+		OBJ_99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IronBank.xcodeproj/HandOfTheKing_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = HandOfTheKing;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = HandOfTheKing;
 			};
 			name = Release;
 		};
@@ -568,47 +748,65 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_32 /* Build configuration list for PBXNativeTarget "IronBankPackageDescription" */ = {
+		OBJ_39 /* Build configuration list for PBXNativeTarget "IronBankPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_33 /* Debug */,
-				OBJ_34 /* Release */,
+				OBJ_40 /* Debug */,
+				OBJ_41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_38 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */ = {
+		OBJ_45 /* Build configuration list for PBXNativeTarget "HandOfTheKingPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_39 /* Debug */,
-				OBJ_40 /* Release */,
+				OBJ_46 /* Debug */,
+				OBJ_47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_44 /* Build configuration list for PBXNativeTarget "IronBank" */ = {
+		OBJ_51 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_45 /* Debug */,
-				OBJ_46 /* Release */,
+				OBJ_52 /* Debug */,
+				OBJ_53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_56 /* Build configuration list for PBXNativeTarget "Rainbow" */ = {
+		OBJ_57 /* Build configuration list for PBXNativeTarget "IronBank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_57 /* Debug */,
-				OBJ_58 /* Release */,
+				OBJ_58 /* Debug */,
+				OBJ_59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_72 /* Build configuration list for PBXNativeTarget "IronBankKit" */ = {
+		OBJ_72 /* Build configuration list for PBXNativeTarget "Rainbow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_73 /* Debug */,
 				OBJ_74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_88 /* Build configuration list for PBXNativeTarget "IronBankKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_89 /* Debug */,
+				OBJ_90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_97 /* Build configuration list for PBXNativeTarget "HandOfTheKing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_98 /* Debug */,
+				OBJ_99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
