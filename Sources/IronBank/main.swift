@@ -17,22 +17,19 @@ guard args.count == 2 && args[1] == "install" else {
 // check whether git is installed
 
 
-// check configuation file
-let configFileName = "Bankfile"
-let currentPath = FileManager.default.currentDirectoryPath
-let configFilePath = URL(fileURLWithPath: currentPath).appendingPathComponent(configFileName)
-let configFile: ConfigFileType
+// do the right thing.
 do {
-    configFile = try ConfigFileFactory.newModel(path: configFilePath.path)
+    try IronBankKit.center.install()
 } catch {
-    if case ConfigFileErrors.fileNotExist = error {
-        print("No \(configFileName) found.".red)
+    switch error {
+    case let IronBankKit.Errors.configFileNotFound(filename):
+        // check configuation file
+        print("No \(filename) found.".red)
+    default:
+        print(error)
     }
+
     exit(EX_CONFIG)
 }
-
-
-// do the right thing
-configFile.update()
 
 

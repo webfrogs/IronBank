@@ -6,12 +6,10 @@
 //
 
 import Foundation
-import HandOfTheKing
 
 public protocol ConfigFileType {
     init(path: String) throws
-
-    func update()
+    var items: [ConfigItem] { get }
 }
 
 public struct ConfigFileFactory {
@@ -22,7 +20,6 @@ public struct ConfigFileFactory {
 
 
 public enum ConfigFileErrors: Error {
-    case fileNotExist
     case contentInvalid
     case typeNotSupported(String)
 }
@@ -63,9 +60,7 @@ struct ConfigFile: ConfigFileType {
     let items: [ConfigItem]
     
     init(path: String) throws {
-        guard FileManager.default.fileExists(atPath: path) else {
-            throw ConfigFileErrors.fileNotExist
-        }
+
         
         let fileContent: String
         do {
@@ -76,6 +71,7 @@ struct ConfigFile: ConfigFileType {
         
         do {
             items = try fileContent.components(separatedBy: "\n")
+                .filter({!$0.isEmpty})
                 .map({ (line) -> ConfigItem in
                     try ConfigItem.init(configLine: line)
                 })
@@ -86,8 +82,3 @@ struct ConfigFile: ConfigFileType {
     }
 }
 
-extension ConfigFile {
-    func update() {
-
-    }
-}
