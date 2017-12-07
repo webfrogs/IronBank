@@ -56,6 +56,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Yams::Yams"
+               BuildableName = "Yams.framework"
+               BlueprintName = "Yams"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Yams::CYaml"
+               BuildableName = "CYaml.framework"
+               BlueprintName = "CYaml"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "CryptoSwift::CryptoSwift"
                BuildableName = "CryptoSwift.framework"
                BlueprintName = "CryptoSwift"

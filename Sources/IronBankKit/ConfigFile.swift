@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Yams
 
 public protocol ConfigFileType {
     init(path: String) throws
@@ -56,18 +57,27 @@ public enum ConfigItem {
     }
 }
 
+//struct YAMLConfigfile: ConfigFileType {
+//    let items: [ConfigItem] = []
+//    init(path: String) throws {
+//
+//    }
+//}
+
+
 struct ConfigFile: ConfigFileType {
     let items: [ConfigItem]
     
     init(path: String) throws {
 
-        
         let fileContent: String
         do {
             fileContent = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
         } catch {
             throw ConfigFileErrors.contentInvalid
         }
+
+
         
         do {
             items = try fileContent.components(separatedBy: "\n")
