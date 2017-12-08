@@ -19,7 +19,7 @@ group.command("install", description: "Install all dependences.") {
         switch error {
         case let IronBankKit.Errors.Config.fileNotFound(filename):
             // check configuation file
-            print("No \(filename) found.".red)
+            print("\(filename) is not found.".red)
         default:
             print(error)
         }
