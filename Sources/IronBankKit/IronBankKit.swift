@@ -90,7 +90,7 @@ extension IronBankKit {
     }
 
     func downloadedFolderPath() throws -> URL {
-        let result = kCurrentPath.appendingPathComponent("IronBank/Downloaded")
+        let result = kCurrentPath.appendingPathComponent("IronBank/Downloads")
         try result.ib.createDirectoryIfNotExist()
         return result
     }

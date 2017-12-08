@@ -8,7 +8,7 @@ print("IronBank only support for macOS now.".red)
 exit(EX_OSERR)
 #endif
 
-let version = "0.0.1-beta"
+let version = "0.0.1-beta.1"
 
 let group = Group()
 
@@ -28,7 +28,7 @@ group.command("install", description: "Install all dependences.") {
 }
 
 group.command("version", description: "Show current version.") {
-    print("Version: \(version)")
+    print("Version: \(version)".green)
 }
 
 group.run()
