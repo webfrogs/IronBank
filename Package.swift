@@ -11,6 +11,7 @@ let package = Package(
         .package(url: "https://github.com/onevcat/Rainbow", from: "3.0.0"),
         .package(url: "https://github.com/webfrogs/HandOfTheKing.git", .branch("master")),
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMajor(from: "0.8.0")),
+        .package(url: "https://github.com/kylef/Commander.git", .upToNextMajor(from: "0.8.0")),
         .package(url: "https://github.com/jpsim/Yams.git", from: "0.5.0")
     ],
     targets: [
@@ -18,7 +19,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "IronBank",
-            dependencies: ["Rainbow", "IronBankKit"]),
+            dependencies: ["Rainbow", "IronBankKit", "Commander"]),
         .target(
             name: "IronBankKit",
             dependencies: ["HandOfTheKing", "CryptoSwift", "Yams"]),

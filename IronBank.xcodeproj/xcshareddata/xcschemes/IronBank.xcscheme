@@ -68,6 +68,10 @@
             argument = "install"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "version"
+            isEnabled = "NO">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
