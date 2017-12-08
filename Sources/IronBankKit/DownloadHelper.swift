@@ -62,15 +62,9 @@ extension DownloadHelper {
 
         // Run hook.
         for shell in info.hooks?.after ?? [] {
-            let task = Process()
-            task.launchPath = "/bin/sh"
-            task.arguments = ["-c", shell]
-            task.currentDirectoryPath = downloadedFolder.path
+            let shellResult = Process.ib.syncRun(shell: shell, currentDir: downloadedFolder.path)
 
-            task.launch()
-            task.waitUntilExit()
-
-            guard task.terminationStatus == EX_OK else {
+            guard shellResult == EX_OK else {
                 throw IronBankKit.Errors.Download.hookFailed(shell: shell)
             }
         }

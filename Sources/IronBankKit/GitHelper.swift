@@ -71,15 +71,7 @@ extension GitHelper {
             print("Cloing \(addr)".green)
         }
 
-        let task = Process()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", gitCommand]
-        task.currentDirectoryPath = shellWorkPath
-
-        task.launch()
-        task.waitUntilExit()
-
-        guard task.terminationStatus == EX_OK else {
+        guard Process.ib.syncRun(shell: gitCommand, currentDir: shellWorkPath) == EX_OK else {
             throw IronBankKit.Errors.Git.fetchFailed(addr: addr)
         }
     }
@@ -107,16 +99,11 @@ private extension GitHelper {
 
         let command = "git reset --hard \(ref)"
 
-        let task = Process()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", command]
-        task.currentDirectoryPath = repoCachePath.path
-        task.environment = ["GIT_WORK_TREE": toFolderPath]
+        let shellResult = Process.ib.syncRun(shell: command
+            , currentDir: repoCachePath.path
+            , envrionment: ["GIT_WORK_TREE": toFolderPath])
 
-        task.launch()
-        task.waitUntilExit()
-
-        guard task.terminationStatus == EX_OK else {
+        guard shellResult == EX_OK else {
             throw IronBankKit.Errors.Git.checkoutFailed(addr: addr)
         }
 
