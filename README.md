@@ -6,11 +6,11 @@ IronBank is designed to be a dependence manager  tool for Cocoa project.
 
 There are several similar tools exists now, and they are good. Why should I use IronBank?
 
-For example, in your iOS project, you should add some static resources such as javascript or html files. They are large and will change sometimes in the future, you don't want to add them to the current git repository used by now, because it will cause the unnecessary size increasement of git repository. How can you handle this? 
+For example, in your iOS project, you should add some static resources such as javascript or html files. They are large and will change sometimes in the future, you don't want to add them to the current git repository used by now, because it will cause the unnecessary size increasement of git repository. How can you handle this? 
 
 Using git submodule? Oh, it will be a nightmare when you have to remove it or change its address. [CocoaPods](http://cocoapods.org/) may be a good choice. But you still need to write a podspec file by your own and put it carefully in your detached resource git repository. Cocoapods is a centralized tool, it wastes me more and more time waiting for pulling its specs. That's why I prefer [Carthage](https://github.com/Carthage/Carthage) in my swift project. But Carthage can not do it, neither [Swift Package Manager](https://github.com/apple/swift-package-manager) can. For now, SPM can not be used for iOS project.
 
-The main purpose of IronBank is fetch the resources listed in the configuration file located in the root path of project, and put them in the fixed path relative to the project. Just like a reference in memory.
+The main purpose of IronBank is fetch the resources listed in the configuration file located in the root path of project, and put them in the fixed path relative to the project. Just like a reference in memory.
 
 Since IronBank is in early development, some important features have not been implemented.
 
