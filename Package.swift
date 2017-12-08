@@ -9,7 +9,6 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/onevcat/Rainbow", from: "3.0.0"),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", "4.0.0" ..< "5.0.0"),
         .package(url: "https://github.com/webfrogs/HandOfTheKing.git", .branch("master")),
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMajor(from: "0.8.0")),
         .package(url: "https://github.com/jpsim/Yams.git", from: "0.5.0")

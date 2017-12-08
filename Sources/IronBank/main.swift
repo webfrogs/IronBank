@@ -22,7 +22,7 @@ do {
     try IronBankKit.center.install()
 } catch {
     switch error {
-    case let IronBankKit.Errors.configFileNotFound(filename):
+    case let IronBankKit.Errors.Config.fileNotFound(filename):
         // check configuation file
         print("No \(filename) found.".red)
     default:

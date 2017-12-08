@@ -11,27 +11,56 @@ import HandOfTheKing
 
 public extension IronBankKit {
     func install() throws {
-        let projectCheckoutPath = try p_gitCheckoutPath()
-        
         try configFile().items.forEach({ (item) in
-            if case let .git(addr) = item {
+            switch item {
+            case let .git(info):
                 // Fetch git repository to local.
-                try GitHelper.standard.fetch(addr: addr)
-                let repoName = try self.p_getGitRepoName(addr: addr)
+                try GitHelper.standard.fetch(addr: info.remote)
 
                 // Checkout files from git to a specific project path
-                let checkoutPath = projectCheckoutPath.appendingPathComponent(repoName)
-                try? FileManager.default.removeItem(at: checkoutPath)
-                try checkoutPath.ib.createDirectoryIfNotExist()
+                try GitHelper.standard.checkout(info: info)
+            case let .download(info):
+                print("Downloading \(info.name)".green)
 
-                // TODO: Checkout the right version from git.
-                try GitHelper.standard
-                    .checkout(addr: addr, ref: "master", toFolderPath: checkoutPath.path)
+                var downloadSuccess = false
+
+                let semaphore = DispatchSemaphore(value: 0)
+                let downloadTask = URLSession.shared.downloadTask(with: info.url) {
+                    (file, response, error) in
+                    defer {
+                        semaphore.signal()
+                    }
+
+                    guard let httpResponse = response as? HTTPURLResponse
+                    , let tmpFilePath = file
+                    , error == nil
+                    , 200..<300 ~= httpResponse.statusCode
+                    else {
+                        return
+                    }
+
+                    do {
+                        let downloadedFolder = try self.downloadedFolderPath()
+                            .appendingPathComponent(info.name)
+                        _ = try? FileManager.default.removeItem(at: downloadedFolder)
+                        try downloadedFolder.ib.createDirectoryIfNotExist()
+                        let movePath = downloadedFolder
+                            .appendingPathComponent(info.url.lastPathComponent)
+                        try FileManager.default.moveItem(at: tmpFilePath, to: movePath)
+                    } catch {
+                        return
+                    }
+
+                    downloadSuccess = true
+                }
+                downloadTask.resume()
+                _ = semaphore.wait(timeout: .now() + 60)
+
+                guard downloadSuccess else {
+                    throw IronBankKit.Errors.Download.failed(info)
+                }
             }
         })
-
-
-
     }
 
 }
@@ -41,7 +70,16 @@ public class IronBankKit {
     private init() {}
 
     public enum Errors: Error {
-        case configFileNotFound(filename: String)
+        public enum Config: Error {
+            case fileNotFound(filename: String)
+            case fileIsNotUTF8Encoding
+            case typeNotSupported
+            case notYaml
+        }
+
+        public enum Download: Error {
+            case failed(DownloadInfo)
+        }
 
         public enum Git: Error {
             case localCacheFolderCreateFailed
@@ -75,10 +113,22 @@ extension IronBankKit {
 
         let configFilePath = kCurrentPath.appendingPathComponent(kConfigFileName)
         guard FileManager.default.fileExists(atPath: configFilePath.path) else {
-            throw Errors.configFileNotFound(filename: kConfigFileName)
+            throw Errors.Config.fileNotFound(filename: kConfigFileName)
         }
         let result = try ConfigFileFactory.newModel(path: configFilePath.path)
         _configFile = result
+        return result
+    }
+
+    func gitCheckoutPath() throws -> URL {
+        let result = kCurrentPath.appendingPathComponent("IronBank/Checkouts")
+        try result.ib.createDirectoryIfNotExist()
+        return result
+    }
+
+    func downloadedFolderPath() throws -> URL {
+        let result = kCurrentPath.appendingPathComponent("IronBank/Downloaded")
+        try result.ib.createDirectoryIfNotExist()
         return result
     }
 }
@@ -87,25 +137,6 @@ private extension IronBankKit {
     func p_workPath() throws -> URL {
         let result = kCurrentPath.appendingPathComponent("IronBank")
         try result.ib.createDirectoryIfNotExist()
-        return result
-    }
-
-    func p_gitCheckoutPath() throws -> URL {
-        let result = kCurrentPath.appendingPathComponent("IronBank/Checkouts")
-        try result.ib.createDirectoryIfNotExist()
-        return result
-    }
-
-    func p_getGitRepoName(addr: String) throws -> String {
-        guard let addrURL = URL(string: addr) else {
-            throw IronBankKit.Errors.Git.repoNameGenerateFailed(addr: addr)
-        }
-        var result = addrURL.lastPathComponent
-        let trimedSuffix = ".git"
-        if result.hasSuffix(trimedSuffix) {
-            result = result.hand.substring(to: result.count - trimedSuffix.count)
-        }
-
         return result
     }
 }

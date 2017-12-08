@@ -15,80 +15,66 @@ public protocol ConfigFileType {
 
 public struct ConfigFileFactory {
     public static func newModel(path: String) throws -> ConfigFileType {
-        return try ConfigFile(path: path)
+        return try YAMLConfigfile(path: path)
     }
 }
 
-
-public enum ConfigFileErrors: Error {
-    case contentInvalid
-    case typeNotSupported(String)
-}
-
-public enum ConfigItem {
-    case git(remote: String)
-    case download(url: String)
-    
-    init(configLine: String) throws {
-        guard let firstSpaceIndex = configLine.index(of: " ") else {
-            throw ConfigFileErrors.contentInvalid
-        }
-        let type = configLine[configLine.startIndex..<firstSpaceIndex]
-
-        var indexString = configLine[configLine.index(firstSpaceIndex, offsetBy: 1)...]
-        guard let firstQuotationMarkIndex = indexString.index(of: "\"") else {
-            throw ConfigFileErrors.contentInvalid
-        }
-
-        indexString = indexString[indexString.index(firstQuotationMarkIndex, offsetBy: 1)...]
-        guard let secondQuotationMarkIndex = indexString.index(of: "\"") else {
-            throw ConfigFileErrors.contentInvalid
-        }
-        let url = String(indexString[..<secondQuotationMarkIndex])
-        
-        switch type {
-        case "git":
-            self = .git(remote: url)
-        case "download":
-            self = .download(url: url)
-        default:
-            throw ConfigFileErrors.typeNotSupported(String(type))
-        }
-    }
-}
-
-//struct YAMLConfigfile: ConfigFileType {
-//    let items: [ConfigItem] = []
-//    init(path: String) throws {
-//
-//    }
-//}
-
-
-struct ConfigFile: ConfigFileType {
+struct YAMLConfigfile: ConfigFileType {
     let items: [ConfigItem]
-    
+
     init(path: String) throws {
 
         let fileContent: String
         do {
             fileContent = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
         } catch {
-            throw ConfigFileErrors.contentInvalid
+            throw IronBankKit.Errors.Config.fileIsNotUTF8Encoding
         }
 
-
-        
-        do {
-            items = try fileContent.components(separatedBy: "\n")
-                .filter({!$0.isEmpty})
-                .map({ (line) -> ConfigItem in
-                    try ConfigItem.init(configLine: line)
-                })
-        } catch {
-            throw error
-        }
-        
+        items = try YAMLDecoder().decode(from: fileContent)
     }
 }
+
+public enum ConfigItem: Decodable {
+    case git(GitInfo)
+    case download(DownloadInfo)
+
+    enum CodingKeys: String, CodingKey {
+        case git
+        case download
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            let gitInfo = try container.decode(GitInfo.self, forKey: .git)
+            self = .git(gitInfo)
+            return
+        } catch DecodingError.dataCorrupted(_) {
+            throw IronBankKit.Errors.Config.notYaml
+        } catch let DecodingError.keyNotFound(key, context)
+            where key.stringValue != CodingKeys.git.stringValue {
+            throw DecodingError.keyNotFound(key, context)
+        } catch {
+        }
+
+        do {
+            let info = try container.decode(DownloadInfo.self, forKey: .download)
+            // TODO: Check whether url is http or https.
+            self = .download(info)
+            return
+        } catch DecodingError.dataCorrupted(_) {
+            throw IronBankKit.Errors.Config.notYaml
+        } catch let DecodingError.keyNotFound(key, context)
+            where key.stringValue != CodingKeys.download.stringValue {
+                throw DecodingError.keyNotFound(key, context)
+        } catch {
+        }
+
+        throw IronBankKit.Errors.Config.typeNotSupported
+    }
+
+}
+
 
