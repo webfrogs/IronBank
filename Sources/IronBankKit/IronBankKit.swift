@@ -20,45 +20,7 @@ public extension IronBankKit {
                 // Checkout files from git to a specific project path
                 try GitHelper.standard.checkout(info: info)
             case let .download(info):
-                print("Downloading \(info.name)".green)
-
-                var downloadSuccess = false
-
-                let semaphore = DispatchSemaphore(value: 0)
-                let downloadTask = URLSession.shared.downloadTask(with: info.url) {
-                    (file, response, error) in
-                    defer {
-                        semaphore.signal()
-                    }
-
-                    guard let httpResponse = response as? HTTPURLResponse
-                    , let tmpFilePath = file
-                    , error == nil
-                    , 200..<300 ~= httpResponse.statusCode
-                    else {
-                        return
-                    }
-
-                    do {
-                        let downloadedFolder = try self.downloadedFolderPath()
-                            .appendingPathComponent(info.name)
-                        _ = try? FileManager.default.removeItem(at: downloadedFolder)
-                        try downloadedFolder.ib.createDirectoryIfNotExist()
-                        let movePath = downloadedFolder
-                            .appendingPathComponent(info.url.lastPathComponent)
-                        try FileManager.default.moveItem(at: tmpFilePath, to: movePath)
-                    } catch {
-                        return
-                    }
-
-                    downloadSuccess = true
-                }
-                downloadTask.resume()
-                _ = semaphore.wait(timeout: .now() + 60)
-
-                guard downloadSuccess else {
-                    throw IronBankKit.Errors.Download.failed(info)
-                }
+                try DownloadHelper.download(info: info)
             }
         })
     }
@@ -79,6 +41,7 @@ public class IronBankKit {
 
         public enum Download: Error {
             case failed(DownloadInfo)
+            case hookFailed(shell: String)
         }
 
         public enum Git: Error {
@@ -91,7 +54,7 @@ public class IronBankKit {
 
     private var _configFile: ConfigFileType?
 
-    private let kConfigFileName = "Bankfile"
+    private let kConfigFileName = "Bankfile.yml"
     private let kCurrentPath: URL = {
         #if DEBUG
             return try! FileManager.default.url(for: .desktopDirectory
