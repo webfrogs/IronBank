@@ -20,7 +20,7 @@ public struct DownloadInfo: Codable {
 
 extension DownloadHelper {
     static func download(info: DownloadInfo) throws {
-        print("Downloading \(info.name)".green)
+        Logger.logInfo("Downloading \(info.name)")
 
         let downloadedFolder = try IronBankKit.center.downloadedFolderPath()
             .appendingPathComponent(info.name)

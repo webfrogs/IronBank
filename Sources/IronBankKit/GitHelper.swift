@@ -68,11 +68,11 @@ extension GitHelper {
                 + addr
                 + " 'refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
             shellWorkPath = repoCachePath.path
-            print("Fetching \(addr)".green)
+            Logger.logInfo("Fetching \(addr)")
         } else {
             gitCommand = "git clone --bare \(addr) \(addrMD5)"
             shellWorkPath = gitRepoCacheFolderPath.path
-            print("Cloing \(addr)".green)
+            Logger.logInfo("Cloing \(addr)")
         }
 
         guard Process.ib.syncRun(shell: gitCommand, currentDir: shellWorkPath) == EX_OK else {
@@ -143,11 +143,10 @@ private extension GitHelper {
         var result: (ref: String, didFind: Bool) = ("master", false)
         defer {
             if result.didFind {
-                print("Find version \(result.ref).".green)
+                Logger.logInfo("Find version \(result.ref)")
             } else {
-                print("Warning: No version matched with '\(info.version)',"
-                    + " use \(result.ref) instead. Check the \(info.name) in Bankfile.yml file."
-                        .yellow)
+                Logger.logWarning("Warning: No version matched with '\(info.version)',"
+                    + " use \(result.ref) instead. Check the \(info.name) in Bankfile.yml file.")
             }
         }
 

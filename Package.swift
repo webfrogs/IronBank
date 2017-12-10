@@ -19,9 +19,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "IronBank",
-            dependencies: ["Rainbow", "IronBankKit", "Commander"]),
+            dependencies: ["IronBankKit", "Commander"]),
         .target(
             name: "IronBankKit",
-            dependencies: ["HandOfTheKing", "CryptoSwift", "Yams"]),
+            dependencies: ["Rainbow", "HandOfTheKing", "CryptoSwift", "Yams"]),
     ]
 )

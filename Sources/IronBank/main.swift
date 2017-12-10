@@ -1,10 +1,9 @@
 import Foundation
-import Rainbow
 import IronBankKit
 import Commander
 
 #if !os(macOS)
-print("IronBank only support for macOS now.".red)
+Logger.logError("IronBank only support for macOS now.")
 exit(EX_OSERR)
 #endif
 
@@ -19,7 +18,7 @@ group.command("install", description: "Install all dependences.") {
         switch error {
         case let IronBankKit.Errors.Config.fileNotFound(filename):
             // check configuation file
-            print("\(filename) is not found.".red)
+            Logger.logError("\(filename) is not found.")
         default:
             print(error)
         }
@@ -28,7 +27,7 @@ group.command("install", description: "Install all dependences.") {
 }
 
 group.command("version", description: "Show current version.") {
-    print("Version: \(version)".green)
+    Logger.logInfo("Current version: \(version)")
 }
 
 group.run()

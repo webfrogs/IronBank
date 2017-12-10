@@ -42,20 +42,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Rainbow::Rainbow"
-               BuildableName = "Rainbow.framework"
-               BlueprintName = "Rainbow"
-               ReferencedContainer = "container:IronBank.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "IronBank::IronBankKit"
                BuildableName = "IronBankKit.framework"
                BlueprintName = "IronBankKit"
@@ -115,6 +101,20 @@
                BlueprintIdentifier = "HandOfTheKing::HandOfTheKing"
                BuildableName = "HandOfTheKing.framework"
                BlueprintName = "HandOfTheKing"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Rainbow::Rainbow"
+               BuildableName = "Rainbow.framework"
+               BlueprintName = "Rainbow"
                ReferencedContainer = "container:IronBank.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
