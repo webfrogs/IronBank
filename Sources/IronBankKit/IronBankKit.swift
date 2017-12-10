@@ -37,6 +37,7 @@ public class IronBankKit {
             case fileIsNotUTF8Encoding
             case typeNotSupported
             case notYaml
+            case versionInvalid(GitInfo)
         }
 
         public enum Download: Error {

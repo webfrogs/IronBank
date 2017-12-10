@@ -18,6 +18,9 @@ Since IronBank is in early development, some important features have not been im
 - create swift modulefile for Objective-C static library to use it as custom module in Swift project.
 
 
+> Adding IronBank to your project has no side effects even if you have used other tools. 
+
+
 # Install
 
 IronBank is written in Swift 4, so you should install Xcode 9 first. Latest release version of Xcode is recommended.
@@ -54,11 +57,20 @@ IronBank will clone the git repository, and checkout the resource from git with 
 - git: # Git repository
     # Required. Git remote address.
     remote: "https://github.com/Alamofire/Alamofire.git"
-    # Required. Checkout version.
+    # Optional, default is master. Checkout version.
     version: "4.6.0"
     # Optional. Override the checkout folder name.
     name: "Alamofire-repo"
 ```
+
+Version can be git hash, git branch, git tag, or string with version syntax listed above:
+
+```
+'~> 0.1.2' Version 0.1.2 and the versions up to 0.2, not including 0.2 and higher
+'~> 0.1' Version 0.1 and the versions up to 1.0, not including 1.0 and higher
+'~> 0' Version 0 and higher, this is basically the same as not having it.
+```
+
 
 ## Downloading 
 
@@ -69,7 +81,7 @@ IronBank will download the resource from web to the path `IronBank/Downloads`.
     # Required. Name of the folder in Downloads directory.
     name: "Crashlytics"
     # Required. the http url used to download 
-    url: "https://s3.amazonaws.com/kits-crashlytics-com/mac/com.twitter.crashlytics.mac/3.9.3/com.twitter.crashlytics.mac-manual.zip"
+    url: "https://s3.amazonaws.com/kits-crashlytics-com/ios/com.twitter.crashlytics.ios/3.9.3/com.crashlytics.ios-manual.zip"
     # Optional. Run custom shell in the proper moment.
     hooks:
       # Run shell after downloading. The shell path is the Download directory.
