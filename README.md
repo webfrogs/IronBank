@@ -8,9 +8,9 @@ There are several similar tools exists now, and they are good. Why should I use 
 
 For example, in your iOS project, you should add some static resources such as javascript or html files. They are large and will change sometimes in the future, you don't want to add them to the current git repository used by now, because it will cause the unnecessary size increasement of git repository. How can you handle this? 
 
-Using git submodule? Oh, it will be a nightmare when you have to remove it or change its address. [CocoaPods](http://cocoapods.org/) may be a good choice. But you still need to write a podspec file by your own and put it carefully in your detached resource git repository. Cocoapods is a centralized tool, it wastes me more and more time waiting for pulling its specs. That's why I prefer [Carthage](https://github.com/Carthage/Carthage) in my swift project. But Carthage can not do it, neither [Swift Package Manager](https://github.com/apple/swift-package-manager) can. For now, SPM can not be used for iOS project.
+Using git submodule? Oh, it will be a nightmare when you have to remove it or change its address. [CocoaPods](http://cocoapods.org/) may be a good choice. But you still need to write a podspec file by your own and put it carefully in your detached resource git repository. Cocoapods is a centralized tool, it wastes me more and more time waiting for pulling its specs. That's why I prefer [Carthage](https://github.com/Carthage/Carthage) in my swift project. But Carthage can not do that, neither [Swift Package Manager](https://github.com/apple/swift-package-manager) can. For now, SPM can not be used for iOS project.
 
-The main purpose of IronBank is fetch the resources listed in the configuration file located in the root path of project, and put them in the fixed path relative to the project. Just like a reference in memory.
+The main purpose of IronBank is fetch the resources listed in the configuration file located in the root path of project, and put them in a fixed path relative to your project. Just like a reference, configuation file points to some resources on the Internet, which used by IronBank to download it for you.
 
 Since IronBank is in early development, some important features have not been implemented.
 
@@ -18,7 +18,7 @@ Since IronBank is in early development, some important features have not been im
 - create swift modulefile for Objective-C static library to use it as custom module in Swift project.
 
 
-> Adding IronBank to your project has no side effects even if you have used other tools. 
+> Adding IronBank support to your project has no side effects even if you have used other tools. 
 
 
 # Install
@@ -77,14 +77,14 @@ Version can be git hash, git branch, git tag, or string with version syntax list
 IronBank will download the resource from web to the path `IronBank/Downloads`.
 
 ``` yaml
-- download: # Downloading from web.
+- download: # Download resources from web.
     # Required. Name of the folder in Downloads directory.
     name: "Crashlytics"
     # Required. the http url used to download 
     url: "https://s3.amazonaws.com/kits-crashlytics-com/ios/com.twitter.crashlytics.ios/3.9.3/com.crashlytics.ios-manual.zip"
     # Optional. Run custom shell in the proper moment.
     hooks:
-      # Run shell after downloading. The shell path is the Download directory.
+      # Run shell after the http is downloaded successfully. Current shell path is the Download directory in the project.
       after:
         - "unzip *.zip"
         - "rm *.zip"

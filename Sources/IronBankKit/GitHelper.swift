@@ -170,7 +170,6 @@ private extension GitHelper {
         }
 
         let gitVersions = output.split(separator: "\n")
-        print(gitVersions)
         let sortedVersion = gitVersions
             .filter({$0.hand.match(regex: self.kVersionRegex)})
             .sorted { (first, second) -> Bool in
