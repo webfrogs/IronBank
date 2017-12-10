@@ -130,12 +130,12 @@ private extension GitHelper {
         let configVersion = info.version.hand.substring(from: "~>".count)
             .hand.trimWhitespaceAndNewline()
         guard configVersion.hand.match(regex: kVersionRegex) else {
-            throw IronBankKit.Errors.Config.versionInvalid(info)
+            throw IronBankKit.Errors.Config.gitVersionInvalid(info)
         }
         let splitConfigVersion = try configVersion.split(separator: ".")
             .map { (text) -> Int in
                 guard let result = Int(text) else {
-                    throw IronBankKit.Errors.Config.versionInvalid(info)
+                    throw IronBankKit.Errors.Config.gitVersionInvalid(info)
                 }
                 return result
             }

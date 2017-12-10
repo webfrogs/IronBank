@@ -8,8 +8,8 @@
 import Foundation
 
 public struct DownloadInfo: Codable {
-    let url: URL
-    let name: String
+    public let url: URL
+    public let name: String
     let hooks: Hooks?
 
     public struct Hooks: Codable {

@@ -31,13 +31,16 @@ public class IronBankKit {
     public static let center = IronBankKit()
     private init() {}
 
+    public let configFileName = "Bankfile.yml"
+
     public enum Errors: Error {
         public enum Config: Error {
             case fileNotFound(filename: String)
             case fileIsNotUTF8Encoding
             case typeNotSupported
             case notYaml
-            case versionInvalid(GitInfo)
+            case gitVersionInvalid(GitInfo)
+            case downloadURLInvalid(DownloadInfo)
         }
 
         public enum Download: Error {
@@ -55,7 +58,6 @@ public class IronBankKit {
 
     private var _configFile: ConfigFileType?
 
-    private let kConfigFileName = "Bankfile.yml"
     private let kCurrentPath: URL = {
         #if DEBUG
             return try! FileManager.default.url(for: .desktopDirectory
@@ -75,11 +77,24 @@ extension IronBankKit {
             return cache
         }
 
-        let configFilePath = kCurrentPath.appendingPathComponent(kConfigFileName)
+        let configFilePath = kCurrentPath.appendingPathComponent(configFileName)
         guard FileManager.default.fileExists(atPath: configFilePath.path) else {
-            throw Errors.Config.fileNotFound(filename: kConfigFileName)
+            throw Errors.Config.fileNotFound(filename: configFileName)
         }
-        let result = try ConfigFileFactory.newModel(path: configFilePath.path)
+
+        let result: ConfigFileType
+        do {
+            result = try ConfigFileFactory.newModel(path: configFilePath.path)
+        } catch {
+            if case let DecodingError.dataCorrupted(context) = error
+            , let underlyingError = context.underlyingError {
+                throw underlyingError
+            } else {
+                throw error
+            }
+
+        }
+
         _configFile = result
         return result
     }

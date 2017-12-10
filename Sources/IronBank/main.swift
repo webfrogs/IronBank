@@ -19,6 +19,10 @@ group.command("install", description: "Install all dependences.") {
         case let IronBankKit.Errors.Config.fileNotFound(filename):
             // check configuation file
             Logger.logError("\(filename) is not found.")
+        case let IronBankKit.Errors.Config.downloadURLInvalid(info):
+            let msg = "Download url wrong, only support http and https."
+                + " Check the url of \(info.name) in \(IronBankKit.center.configFileName)."
+            Logger.logError(msg)
         default:
             print(error)
         }

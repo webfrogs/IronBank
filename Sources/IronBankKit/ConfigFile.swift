@@ -61,11 +61,16 @@ public enum ConfigItem: Decodable {
 
         do {
             let info = try container.decode(DownloadInfo.self, forKey: .download)
-            // TODO: Check whether url is http or https.
+            guard let scheme = info.url.scheme
+            , scheme.lowercased() == "http" || scheme.lowercased() == "https" else {
+                throw IronBankKit.Errors.Config.downloadURLInvalid(info)
+            }
             self = .download(info)
             return
         } catch DecodingError.dataCorrupted(_) {
             throw IronBankKit.Errors.Config.notYaml
+        } catch let IronBankKit.Errors.Config.downloadURLInvalid(info) {
+            throw IronBankKit.Errors.Config.downloadURLInvalid(info)
         } catch let DecodingError.keyNotFound(key, context)
             where key.stringValue != CodingKeys.download.stringValue {
                 throw DecodingError.keyNotFound(key, context)
