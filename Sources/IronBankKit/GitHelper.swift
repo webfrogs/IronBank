@@ -3,25 +3,16 @@ import CryptoSwift
 import Rainbow
 
 public struct GitInfo: Decodable {
-
-    func checkoutFolderPath() throws -> URL {
-        let projectCheckoutPath = try IronBankKit.center.gitCheckoutPath()
-
-        let checkoutPath = projectCheckoutPath.appendingPathComponent(name)
-        try? FileManager.default.removeItem(at: checkoutPath)
-        try checkoutPath.ib.createDirectoryIfNotExist()
-
-        return checkoutPath
-    }
-
     let remote: String
     let version: String
     let name: String
+    let build: BuildType?
 
     enum CodingKeys: String, CodingKey {
         case remote
         case version
         case name
+        case build
     }
 
     public init(from decoder: Decoder) throws {
@@ -51,9 +42,24 @@ public struct GitInfo: Decodable {
             }
             name = result
         }
+
+        // build is optional
+        do {
+            let buildModel: BuildType
+            buildModel = try values.decode(XcodeBuild.self, forKey: .build)
+            build = buildModel
+        } catch {
+            build = nil
+        }
+    }
+
+    func checkoutFolderPath() throws -> URL {
+        let projectCheckoutPath = try IronBankKit.center.gitCheckoutPath()
+        let checkoutPath = projectCheckoutPath.appendingPathComponent(name)
+
+        return checkoutPath
     }
 }
-
 
 extension GitHelper {
     func fetch(addr: String) throws {
@@ -103,8 +109,12 @@ private extension GitHelper {
             try fetch(addr: info.remote)
         }
 
-        let toFolderPath = try info.checkoutFolderPath().path
-        let gitEnv = ["GIT_WORK_TREE": toFolderPath]
+        let checkoutPath = try info.checkoutFolderPath()
+        // clear checkout folder. Checkout folder should exist, or git checkout will fail.
+        try? FileManager.default.removeItem(at: checkoutPath)
+        try checkoutPath.ib.createDirectoryIfNotExist()
+
+        let gitEnv = ["GIT_WORK_TREE": checkoutPath.path]
 
         let checkoutRef = try p_calculateProperRef(info: info
             , shellDir: repoCachePath.path
@@ -152,19 +162,9 @@ private extension GitHelper {
 
         let shell = "git tag"
 
-        let task = Process()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", shell]
-        task.currentDirectoryPath = shellDir
-        task.environment = shellEnv
-
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.launch()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        task.waitUntilExit()
-
-        guard let output = String(data: data, encoding: String.Encoding.utf8) else {
+        guard let output = Process.ib.syncRunWithOutput(shell: shell
+            , currentDir: shellDir
+            , envrionment: shellEnv) else {
             return result.ref
         }
 

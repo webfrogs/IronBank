@@ -1,6 +1,5 @@
 import Foundation
 import IronBankKit
-import Commander
 
 #if !os(macOS)
 Logger.logError("IronBank only support for macOS now.")
@@ -9,9 +8,15 @@ exit(EX_OSERR)
 
 let version = "0.0.1-beta.1"
 
-let group = Group()
 
-group.command("install", description: "Install all dependences.") {
+
+guard CommandLine.arguments.count == 2 else {
+    Logger.logError("Invalid command. See IronBank's usage.")
+    exit(EX_USAGE)
+}
+
+switch CommandLine.arguments[1] {
+case "install":
     do {
         try IronBankKit.center.install()
     } catch {
@@ -28,11 +33,11 @@ group.command("install", description: "Install all dependences.") {
         }
         exit(EX_CONFIG)
     }
-}
 
-group.command("version", description: "Show current version.") {
+case "version":
     Logger.logInfo("Current version: \(version)")
+default:
+    Logger.logError("Invalid command. See IronBank's usage.")
+    exit(EX_USAGE)
 }
-
-group.run()
 

@@ -11,6 +11,8 @@ import HandOfTheKing
 
 public extension IronBankKit {
     func install() throws {
+
+        var buildList: [ConfigItem] = []
         try configFile().items.forEach({ (item) in
             switch item {
             case let .git(info):
@@ -19,10 +21,24 @@ public extension IronBankKit {
 
                 // Checkout files from git to a specific project path
                 try GitHelper.standard.checkout(info: info)
+
+                if info.build != nil {
+                    buildList.append(item)
+                }
             case let .download(info):
                 try DownloadHelper.download(info: info)
             }
         })
+
+        // Build
+        for item in buildList {
+            switch item {
+            case let .git(info):
+                try info.build?.build(item: item)
+            case .download:
+                break
+            }
+        }
     }
 
 }
@@ -53,6 +69,10 @@ public class IronBankKit {
             case fetchFailed(addr: String)
             case checkoutFailed(addr: String)
             case repoNameGenerateFailed(addr: String)
+        }
+
+        public enum Build: Error {
+            case projectNotFound
         }
     }
 
@@ -107,6 +127,12 @@ extension IronBankKit {
 
     func downloadedFolderPath() throws -> URL {
         let result = kCurrentPath.appendingPathComponent("IronBank/Downloads")
+        try result.ib.createDirectoryIfNotExist()
+        return result
+    }
+
+    func buildFolderPath() throws -> URL {
+        let result = kCurrentPath.appendingPathComponent("IronBank/Builds")
         try result.ib.createDirectoryIfNotExist()
         return result
     }

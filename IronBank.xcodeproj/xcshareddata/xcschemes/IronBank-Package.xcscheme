@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Commander::Commander"
-               BuildableName = "Commander.framework"
-               BlueprintName = "Commander"
+               BlueprintIdentifier = "IronBank::IronBankKit"
+               BuildableName = "IronBankKit.framework"
+               BlueprintName = "IronBankKit"
                ReferencedContainer = "container:IronBank.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,51 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "IronBank::IronBankKit"
-               BuildableName = "IronBankKit.framework"
-               BlueprintName = "IronBankKit"
+               BlueprintIdentifier = "xcproj::xcproj"
+               BuildableName = "xcproj.framework"
+               BlueprintName = "xcproj"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AEXML::AEXML"
+               BuildableName = "AEXML.framework"
+               BlueprintName = "AEXML"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PathKit::PathKit"
+               BuildableName = "PathKit.framework"
+               BlueprintName = "PathKit"
+               ReferencedContainer = "container:IronBank.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Spectre::Spectre"
+               BuildableName = "Spectre.framework"
+               BlueprintName = "Spectre"
                ReferencedContainer = "container:IronBank.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
