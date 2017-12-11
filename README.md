@@ -39,6 +39,8 @@ make install
 
 # Usage
 
+## Basic
+
 Create a configuration file named `Bankfile.yml` in your project's root path. Then run the command:
 
 ```
@@ -49,7 +51,7 @@ YES, IronBank uses YAML as the configuration file's format. It may be unfamiliar
 
 The root data struction of configuration file is an array. For now, it supports two dependent types. One is Git repository and the other is HTTP downloading.
 
-## Git Repository
+### Git Repository
 
 IronBank will clone the git repository, and checkout the resource from git with the version specified by you. You can find them in the folder `IronBank/Checkouts` from the project's root path.
 
@@ -59,11 +61,11 @@ IronBank will clone the git repository, and checkout the resource from git with 
     remote: "https://github.com/Alamofire/Alamofire.git"
     # Optional, default is master. Checkout version.
     version: "4.6.0"
-    # Optional. Override the checkout folder name.
+    # Optional. Override the checkout folder's name.
     name: "Alamofire-repo"
 ```
 
-Version can be git hash, git branch, git tag, or string with version syntax listed above:
+Version can be git hash, git branch, git tag, or string with version syntax listed below:
 
 ```
 '~> 0.1.2' Version 0.1.2 and the versions up to 0.2, not including 0.2 and higher
@@ -72,7 +74,7 @@ Version can be git hash, git branch, git tag, or string with version syntax list
 ```
 
 
-## Downloading 
+### Downloading 
 
 IronBank will download the resource from web to the path `IronBank/Downloads`.
 
@@ -88,4 +90,24 @@ IronBank will download the resource from web to the path `IronBank/Downloads`.
       after:
         - "unzip *.zip"
         - "rm *.zip"
+```
+
+## Build
+
+IronBank can help you build project. Recently, it only supports Xcode project which does not use any dependency tools. This feature is still in progress. There is a todo list below which shows features in IronBank's 1.0 release version.
+
+- [ ] Cocopods support.
+- [ ] Carthgage support.
+- [ ] Git submodule support.
+
+For now, you can add build configuration to a git repository like this:
+
+``` yaml
+- git:
+    remote: "https://github.com/webfrogs/Transformers.git"
+    version: "master"
+    build:
+      type: xcode
+      platforms:
+        - iOS
 ```
