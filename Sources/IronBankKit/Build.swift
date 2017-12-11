@@ -12,6 +12,8 @@ protocol BuildType: Codable {
     func build(item: ConfigItem) throws
 }
 
+//let buildTypeHandler: ()
+
 extension XcodeBuild {
     func build(item: ConfigItem) throws {
         switch item {
@@ -149,8 +151,8 @@ struct XcodeBuild: BuildType {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let type = try container.decode(String.self, forKey: .type)
-        guard type == "xcode" else {
-            throw IronBankKit.Errors.Build.typeInvalid
+        guard type == "Xcode" else {
+            throw IronBankKit.Errors.Build.typeNotMatch
         }
 
         platforms = try container.decode([String].self, forKey: .platforms)

@@ -107,7 +107,7 @@ For now, you can add build configuration to a git repository like this:
     remote: "https://github.com/webfrogs/Transformers.git"
     version: "master"
     build:
-      type: xcode
+      type: Xcode
       platforms:
         - iOS
 ```

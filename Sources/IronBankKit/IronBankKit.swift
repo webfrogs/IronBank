@@ -74,7 +74,8 @@ public class IronBankKit {
         public enum Build: Error {
             case projectNotFound
             case projectCannotParsed
-            case typeInvalid
+            case typeNotMatch
+            case typeNotSupport
             case configInfoWrong(String)
             case buildFailed
         }

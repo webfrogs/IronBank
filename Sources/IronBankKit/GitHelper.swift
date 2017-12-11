@@ -44,13 +44,16 @@ public struct GitInfo: Decodable {
         }
 
         // build is optional
+        var builder: BuildType? = nil
         do {
-            let buildModel: BuildType
-            buildModel = try values.decode(XcodeBuild.self, forKey: .build)
-            build = buildModel
+            builder = try values.decode(XcodeBuild.self, forKey: .build)
+        } catch IronBankKit.Errors.Build.typeNotMatch {
+            throw IronBankKit.Errors.Build.typeNotSupport
         } catch {
-            build = nil
+            throw error
         }
+
+        build = builder
     }
 
     func checkoutFolderPath() throws -> URL {
