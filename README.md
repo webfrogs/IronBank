@@ -94,13 +94,13 @@ IronBank will download the resource from web to the path `IronBank/Downloads`.
 
 ## Build
 
-IronBank can help you build project. Recently, it only supports Xcode project which does not use any dependency tools. This feature is still in progress. There is a todo list below which shows features in IronBank's 1.0 release version.
+If the dependency is a xcode project, you can intergrate it as source code, or add its add its project to your main project after IronBank fetch its content. Alternatively, IronBank can build it for you, but only Cocoa framework projectcan be built. But as the project may use other dependency tools, this feature is still in progress. There is a todo list below shows which tools should be supported.
 
+- [x] Carthgage support.
 - [ ] Cocopods support.
-- [ ] Carthgage support.
 - [ ] Git submodule support.
 
-For now, you can add build configuration to a git repository like this:
+Add build configuration to a git repository like this:
 
 ``` yaml
 - git:

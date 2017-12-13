@@ -77,7 +77,9 @@ public class IronBankKit {
             case typeNotMatch
             case typeNotSupport
             case configInfoWrong(String)
+            case dependencyWrong
             case buildFailed
+            case xcodeWorkspaceNotSupport
         }
     }
 

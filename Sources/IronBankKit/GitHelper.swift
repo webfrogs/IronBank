@@ -46,7 +46,7 @@ public struct GitInfo: Decodable {
         // build is optional
         var builder: BuildType? = nil
         do {
-            builder = try values.decode(XcodeBuild.self, forKey: .build)
+            builder = try values.decode(XcodeBuilder.self, forKey: .build)
         } catch IronBankKit.Errors.Build.typeNotMatch {
             throw IronBankKit.Errors.Build.typeNotSupport
         } catch {
