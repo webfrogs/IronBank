@@ -54,6 +54,11 @@ public struct GitRepoInfo: Decodable {
             builder = try values.decode(XcodeBuilder.self, forKey: .build)
         } catch IronBankKit.Errors.Build.typeNotMatch {
             throw IronBankKit.Errors.Build.typeNotSupport
+        } catch let DecodingError.keyNotFound(key, context) {
+            // build key is options.
+            if key.stringValue != CodingKeys.build.stringValue {
+                throw DecodingError.keyNotFound(key, context)
+            }
         } catch {
             throw error
         }
