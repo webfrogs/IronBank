@@ -14,6 +14,10 @@ public extension IronBankKit {
 
         var buildList: [ConfigItem] = []
         var checkoutList: [GitCheckoutInfo] = []
+
+        // Checkout or Download
+        try? FileManager.default.removeItem(at: gitCheckoutPath())
+        try? FileManager.default.removeItem(at: downloadedFolderPath())
         try configFile().items.forEach({ (item) in
             switch item {
             case let .git(info):
@@ -33,6 +37,7 @@ public extension IronBankKit {
         })
 
         // Make checkout resolve file.
+        try? FileManager.default.removeItem(at: resolvedFilePath())
         let resolvedInfo = checkoutList
             .sorted { $0.name < $1.name }
             .map {$0.resolovedString()}
@@ -47,6 +52,7 @@ public extension IronBankKit {
 
 
         // Build
+        try? FileManager.default.removeItem(at: buildFolderPath())
         for item in buildList {
             switch item {
             case let .git(info):
