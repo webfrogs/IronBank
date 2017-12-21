@@ -13,6 +13,7 @@ public extension IronBankKit {
     func install() throws {
 
         var buildList: [ConfigItem] = []
+        var checkoutList: [GitCheckoutInfo] = []
         try configFile().items.forEach({ (item) in
             switch item {
             case let .git(info):
@@ -20,7 +21,8 @@ public extension IronBankKit {
                 try GitHelper.standard.fetch(addr: info.remote)
 
                 // Checkout files from git to a specific project path
-                try GitHelper.standard.checkout(info: info)
+                let checkoutInfo = try GitHelper.standard.checkout(info: info)
+                checkoutList.append(checkoutInfo)
 
                 if info.build != nil {
                     buildList.append(item)
@@ -29,6 +31,20 @@ public extension IronBankKit {
                 try DownloadHelper.download(info: info)
             }
         })
+
+        // Make checkout resolve file.
+        let resolvedInfo = checkoutList
+            .sorted { $0.name < $1.name }
+            .map {$0.resolovedString()}
+            .joined(separator: "\n\n")
+        do {
+            try resolvedInfo.write(to: resolvedFilePath()
+                , atomically: true
+                , encoding: String.Encoding.utf8)
+        } catch {
+            throw IronBankKit.Errors.Resolve.writeFailed
+        }
+
 
         // Build
         for item in buildList {
@@ -48,6 +64,7 @@ public class IronBankKit {
     private init() {}
 
     public let configFileName = "Bankfile.yml"
+    public let resolvedFileName = "IronBank.resolved"
 
     public enum Errors: Error {
         public enum Config: Error {
@@ -55,8 +72,12 @@ public class IronBankKit {
             case fileIsNotUTF8Encoding
             case typeNotSupported
             case notYaml
-            case gitVersionInvalid(GitInfo)
+            case gitVersionInvalid(GitRepoInfo)
             case downloadURLInvalid(DownloadInfo)
+        }
+
+        public enum Resolve: Error {
+            case writeFailed
         }
 
         public enum Download: Error {
@@ -142,6 +163,12 @@ extension IronBankKit {
         let result = kCurrentPath.appendingPathComponent("IronBank/Builds")
         try result.ib.createDirectoryIfNotExist()
         return result
+    }
+
+    func resolvedFilePath() throws -> URL {
+        let resolvedFolerPath = kCurrentPath.appendingPathComponent("IronBank")
+        try resolvedFolerPath.ib.createDirectoryIfNotExist()
+        return resolvedFolerPath.appendingPathComponent(resolvedFileName)
     }
 }
 

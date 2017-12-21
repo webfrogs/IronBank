@@ -1,68 +1,5 @@
 import Foundation
 import CryptoSwift
-import Rainbow
-
-public struct GitInfo: Decodable {
-    let remote: String
-    let version: String
-    let name: String
-    let build: BuildType?
-
-    enum CodingKeys: String, CodingKey {
-        case remote
-        case version
-        case name
-        case build
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-
-        remote = try values.decode(String.self, forKey: .remote)
-
-        // version is optional.
-        do {
-            version = try values.decode(String.self, forKey: .version)
-                .hand.trimWhitespaceAndNewline()
-        } catch {
-            version = "master"
-        }
-
-        // name is optional.
-        do {
-            name = try values.decode(String.self, forKey: .name)
-        } catch {
-            guard let addrURL = URL(string: remote) else {
-                throw IronBankKit.Errors.Git.repoNameGenerateFailed(addr: remote)
-            }
-            var result = addrURL.lastPathComponent
-            let trimedSuffix = ".git"
-            if result.hasSuffix(trimedSuffix) {
-                result = result.hand.substring(to: result.count - trimedSuffix.count)
-            }
-            name = result
-        }
-
-        // build is optional
-        var builder: BuildType? = nil
-        do {
-            builder = try values.decode(XcodeBuilder.self, forKey: .build)
-        } catch IronBankKit.Errors.Build.typeNotMatch {
-            throw IronBankKit.Errors.Build.typeNotSupport
-        } catch {
-            throw error
-        }
-
-        build = builder
-    }
-
-    func checkoutFolderPath() throws -> URL {
-        let projectCheckoutPath = try IronBankKit.center.gitCheckoutPath()
-        let checkoutPath = projectCheckoutPath.appendingPathComponent(name)
-
-        return checkoutPath
-    }
-}
 
 extension GitHelper {
     func fetch(addr: String) throws {
@@ -89,8 +26,8 @@ extension GitHelper {
         }
     }
 
-    func checkout(info: GitInfo) throws {
-        try p_checkout(info: info)
+    func checkout(info: GitRepoInfo) throws -> GitCheckoutInfo {
+        return try p_checkout(repo: info)
     }
 
 }
@@ -104,22 +41,22 @@ class GitHelper {
 
 // MARK: - ** Extension: Private Methods **
 private extension GitHelper {
-    func p_checkout(info: GitInfo) throws {
+    func p_checkout(repo: GitRepoInfo) throws -> GitCheckoutInfo {
         let repoCachePath = try URL.ib.gitLocalCacheFolderPath()
-            .appendingPathComponent(info.remote.md5())
+            .appendingPathComponent(repo.remote.md5())
         if !FileManager.default.fileExists(atPath: repoCachePath.path) {
             // if cache is not found, fetch first.
-            try fetch(addr: info.remote)
+            try fetch(addr: repo.remote)
         }
 
-        let checkoutPath = try info.checkoutFolderPath()
+        let checkoutPath = try repo.checkoutFolderPath()
         // clear checkout folder. Checkout folder should exist, or git checkout will fail.
         try? FileManager.default.removeItem(at: checkoutPath)
         try checkoutPath.ib.createDirectoryIfNotExist()
 
         let gitEnv = ["GIT_WORK_TREE": checkoutPath.path]
 
-        let checkoutRef = try p_calculateProperRef(info: info
+        let checkoutRef = try p_calculateProperRef(info: repo
             , shellDir: repoCachePath.path
             , shellEnv: gitEnv)
 
@@ -130,11 +67,20 @@ private extension GitHelper {
             , envrionment: gitEnv)
 
         guard shellResult == EX_OK else {
-            throw IronBankKit.Errors.Git.checkoutFailed(addr: info.remote)
+            throw IronBankKit.Errors.Git.checkoutFailed(addr: repo.remote)
         }
+
+        // Get current hash
+        guard let hash = Process.ib.syncRunWithOutput(shell: "git rev-parse HEAD"
+            , currentDir: repoCachePath.path
+            , envrionment: gitEnv)?.hand.trimWhitespaceAndNewline(), !hash.isEmpty else {
+                throw IronBankKit.Errors.Git.checkoutFailed(addr: repo.remote)
+        }
+
+        return GitCheckoutInfo(name: repo.name, remote: repo.remote, hash: hash)
     }
 
-    func p_calculateProperRef(info: GitInfo, shellDir: String, shellEnv: [String: String]) throws
+    func p_calculateProperRef(info: GitRepoInfo, shellDir: String, shellEnv: [String: String]) throws
     -> String {
         guard info.version.hasPrefix("~>") else {
             return info.version

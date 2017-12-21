@@ -36,7 +36,7 @@ struct YAMLConfigfile: ConfigFileType {
 }
 
 public enum ConfigItem: Decodable {
-    case git(GitInfo)
+    case git(GitRepoInfo)
     case download(DownloadInfo)
 
     enum CodingKeys: String, CodingKey {
@@ -48,7 +48,7 @@ public enum ConfigItem: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         do {
-            let gitInfo = try container.decode(GitInfo.self, forKey: .git)
+            let gitInfo = try container.decode(GitRepoInfo.self, forKey: .git)
             self = .git(gitInfo)
             return
         } catch DecodingError.dataCorrupted(_) {
