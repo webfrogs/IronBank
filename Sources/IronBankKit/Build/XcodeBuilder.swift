@@ -184,7 +184,7 @@ private extension XcodeBuilder {
 
         for (_, target) in project.pbxproj.objects.nativeTargets {
             guard target.productType == PBXProductType.framework else {
-                // Only build framework.
+                // Only build framework target for now.
                 continue
             }
 

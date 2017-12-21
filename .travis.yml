@@ -5,4 +5,4 @@ sudo: required
 dist: trusty
 osx_image: xcode9.2
 script:
-  - swift build #Builds the dependencies
+  - swift build -c release -Xswiftc -static-stdlib #Builds the dependencies

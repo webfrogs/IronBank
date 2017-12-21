@@ -1,4 +1,4 @@
-# IronBank [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md)
+# IronBank [![Travis ci](https://travis-ci.org/webfrogs/IronBank.svg?branch=master)](https://travis-ci.org/webfrogs/IronBank) [![Platform](https://img.shields.io/badge/Platform-macOS-green.svg?style=flat)](https://github.com/webfrogs/IronBank) [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md)
 
 IronBank is designed to be a dependence manager  tool for Cocoa project.
 
@@ -16,6 +16,7 @@ Since IronBank is in early development, some important features have not been im
 
 - build framework and cache the build result.
 - create swift modulefile for Objective-C static library to use it as custom module in Swift project.
+- build static library for swift framework project.
 
 
 > Adding IronBank support to your project has no side effects even if you have used other tools. 
