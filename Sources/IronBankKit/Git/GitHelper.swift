@@ -21,7 +21,7 @@ extension GitHelper {
             Logger.logInfo("Cloing \(addr)")
         }
 
-        guard Process.ib.syncRun(shell: gitCommand, currentDir: shellWorkPath) == EX_OK else {
+        guard Process.ib.syncRun(shell: gitCommand, currentDir: shellWorkPath) else {
             throw IronBankKit.Errors.Git.fetchFailed(addr: addr)
         }
     }
@@ -66,7 +66,7 @@ private extension GitHelper {
             , currentDir: repoCachePath.path
             , envrionment: gitEnv)
 
-        guard shellResult == EX_OK else {
+        guard shellResult else {
             throw IronBankKit.Errors.Git.checkoutFailed(addr: repo.remote)
         }
 

@@ -11,7 +11,7 @@ extension Process: NamespaceWrappable {}
 extension NamespaceWrapper where T: Process {
     static func syncRun(shell: String
         , currentDir: String? = nil
-        , envrionment: [String: String] = [:]) -> Int32 {
+        , envrionment: [String: String] = [:]) -> Bool {
         let task = Process()
         task.launchPath = "/bin/sh"
         task.arguments = ["-c", shell]
@@ -25,7 +25,7 @@ extension NamespaceWrapper where T: Process {
         task.launch()
         task.waitUntilExit()
 
-        return task.terminationStatus
+        return task.terminationStatus == EX_OK
     }
 
     static func syncRunWithOutput(shell: String
